@@ -1,0 +1,36 @@
+{% extends 'MyImageAdda/base.html' %} 
+{% load static %} 
+{% block title %} Contact | MyImageAdda {% endblock title %} 
+{% block content %}
+<div class="container">
+    <h1 class="display-4 text-center">Contact Me <span class='info text-muted'>I'll try to respond you within 24 hours.</span></h1>
+    <hr>
+    <div class="row">
+        <div class="col-lg-5">
+            <img class='mt-3' src="{% static 'contact.jpg' %}" alt="contact" style='height:500px;'>
+        </div>
+        <div class="col-lg-7">
+            <form action="{% url 'contact' %}" method='post' class="mt-3">
+                {% csrf_token %}
+            <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name='name' aria-describedby="name" placeholder="Name...">
+
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name='email' aria-describedby="emailHelp" placeholder="Email Address...">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="content">Message</label>
+            <textarea name="content" id="content" class="form-control" cols="30" rows="5" placeholder="Leave Your Message..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+         
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

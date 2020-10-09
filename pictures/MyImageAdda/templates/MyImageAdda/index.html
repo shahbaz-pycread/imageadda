@@ -1,0 +1,28 @@
+{% extends 'MyImageAdda/base.html' %} 
+{% load static %} 
+{% block title %} Home | MyImageAdda 
+{% endblock title %} 
+{% block content %}
+<div class="container">
+    <p class="display-4 pt-4">I am not a <strong>{pro photographer}</strong>, its just that I like to take the picture of the nature.</p>
+    <hr>
+    <h2 class="display-3 text-center ">Pictures</h2>
+    <div class="row my-5 mx-3">
+        {% for x in pics %}
+        <div class="col-lg-3 mx-3">
+            <div class="card my-2 " style="width: 18rem;">
+                <img src="{{ x.picture.url }}" class="zoom card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">The pic was taken in <strong>{{x.place}}</strong></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% include "MyImageAdda/pagination.html" with page=pics %}
+
+{% endblock content %}
